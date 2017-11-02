@@ -5,6 +5,8 @@
         <p class="label label-default" style="font-weight:100;">{{ user }}</p>
         <br>
         <slot></slot>
+        <br>
+        <small class="pull-right" style="font-size:10px;">{{ time }}</small>
       </div>
     </div>
   </div>
@@ -14,7 +16,8 @@
     export default {
         props: [
           'kelas',
-          'user'
+          'user',
+          'time'
         ],
         computed: {
           className() {

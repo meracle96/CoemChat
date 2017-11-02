@@ -198,22 +198,28 @@
                     <div class="navbar-collapse collapse" id="data-scroll">
                         <ul class="nav navbar-nav navbar-center" style="margin-top:10px;">
                             <li class="active">
-                                <a href="/#home">Home</a>
+                                <a href="#home">Home</a>
                             </li>
                             <li>
-                                <a href="/#services">Services</a>
+                                <a href="#services">Services</a>
                             </li>
                             <li>
-                                <a href="/#team">Team</a>
+                                <a href="#team">Team</a>
                             </li>
                             <li>
-                                <a href="/#testi">Reviews</a>
+                                <a href="#testi">Reviews</a>
                             </li>
                             @guest
                             <li>
                                 <a href="/login">Login</a>
                             </li>
                             @endguest
+
+                            @auth
+                            <li>
+                                <a href="/chat">Chat Room</a>
+                            </li>
+                            @endauth
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             @guest
@@ -223,7 +229,15 @@
                             @endguest
                             @auth
                             <li>
-                                <a href="/register"><button type="button" class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Logout</button></a>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    <button type="button" class="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Logout</button>
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
                             @endauth
                         </ul>
